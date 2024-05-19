@@ -6,15 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Товары")
+@Table(name = "basket")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
+    @Column(name = "ID_product")
+    private Long id_product;
     @Column(name = "Название")
     private String title;
     @Column(name = "Описание")
@@ -25,8 +27,4 @@ public class Product {
     private int weight;
     @Column(name = "Наличие")
     private int being;
-
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinColumn
-    private User user;
 }
